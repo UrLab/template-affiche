@@ -1,0 +1,18 @@
+width:  2100
+height: 2970
+date: 5 octobre 2015
+location: ULB - K.4.401
+font: Laksaman
+conferences:
+  -
+    color: "#00aa00"
+    text: "Aventures en\nPython"
+    image: octobre2015/elephant_serpent.png
+  -
+    color: "#002150"
+    text: "Thérapie\npar protons"
+    image: octobre2015/flux.png
+  -
+    color: "#aa2012"
+    text: "Langages\nésotériques"
+    image: octobre2015/langs.png
