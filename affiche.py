@@ -82,20 +82,22 @@ class Affiche(object):
                     top = (y1 + y2)/2 - 0.05
                 else:
                     left = 0.3
-                    top = 0.01 + (y1 + y2)/2
+                    top = 0.003 + (y1 + y2)/2
 
+                # Shadow
                 for i, line in enumerate(text.split('\n')):
                     self.ctx.move_to(
                         0.002 + left + i*font_size*2.5,
-                        0.003 + top + i*(font_size*0.9))
+                        0.003 + top + i*font_size)
                     self.ctx.text_path(line)
                 self.ctx.set_source_rgb(0, 0, 0)
                 self.ctx.fill()
 
+                # Front text
                 for i, line in enumerate(text.split('\n')):
                     self.ctx.move_to(
                         left + i*font_size*2.5,
-                        top + i*(font_size*0.9))
+                        top + i*font_size)
                     self.ctx.text_path(line)
                 self.ctx.set_source_rgb(1, 1, 1)
                 self.ctx.fill()
@@ -118,7 +120,7 @@ class Affiche(object):
 
     def draw_constant_infos(self):
         self.ctx.select_font_face(
-                self.font, cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_BOLD)
+                self.font, cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_NORMAL)
 
         self.ctx.set_font_size(0.1)
         self.ctx.move_to(0.02, 0.1)
