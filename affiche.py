@@ -4,6 +4,7 @@ from sys import argv
 from contextlib import contextmanager
 import yaml
 import cairo
+from cairottf import create_cairo_font_face_for_file
 
 
 def parse_css_color(css_color):
@@ -37,7 +38,7 @@ class Affiche(object):
             self.ctx.line_to(x, y2)
 
         imgfile = triangle_options.get('image', None)
-        text = triangle_options.get('text', None)
+        text = triangle_options.get('text', None).upper()
         color = triangle_options.get('color', "#ffffff")
         if isinstance(color, str) or isinstance(color, unicode):
             color = parse_css_color(color)
@@ -72,8 +73,6 @@ class Affiche(object):
         # Text
         if text:
             with self.saved():
-                self.ctx.select_font_face(
-                    self.font, cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_NORMAL)
                 font_size = 0.08
                 self.ctx.set_font_size(font_size)
 
@@ -103,25 +102,19 @@ class Affiche(object):
                 self.ctx.fill()
 
     def draw_pratical_infos(self, date_text, place):
-        self.ctx.select_font_face(
-                self.font, cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_BOLD)
-
         self.ctx.set_font_size(0.05)
         self.ctx.move_to(0.02, 0.2)
         self.ctx.text_path(place)
         self.ctx.set_source_rgb(0.3, 0.3, 0.3)
         self.ctx.fill()
 
-        self.ctx.set_font_size(0.05)
+        self.ctx.set_font_size(0.045)
         self.ctx.move_to(0.02, 0.15)
         self.ctx.text_path(date_text)
         self.ctx.set_source_rgb(1, 0.1, 0.3)
         self.ctx.fill()
 
     def draw_constant_infos(self):
-        self.ctx.select_font_face(
-                self.font, cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_NORMAL)
-
         self.ctx.set_font_size(0.1)
         self.ctx.move_to(0.02, 0.1)
         self.ctx.text_path("SmartMonday")
@@ -131,17 +124,25 @@ class Affiche(object):
         self.ctx.text_path(u"Conférences")
         self.ctx.move_to(0.02, 0.86)
         self.ctx.text_path(u"gratuites en français")
-        
-        self.ctx.move_to(0.02, 0.97)
+
+        self.ctx.move_to(0.02, 0.96)
         self.ctx.text_path(u"http://urlab.be/sm")
         self.ctx.set_source_rgb(0, 0, 0)
+        self.ctx.fill()
+
+        self.ctx.move_to(0.02, 0.99)
+        self.ctx.set_font_size(0.025)
+        self.ctx.text_path(
+            u"Éditeur responsable: Cercle informatique, "
+            u"Boulevard du Triomphe CP 206, 1050 Bruxelles")
+        self.ctx.set_source_rgb(0.5, 0.5, 0.5)
         self.ctx.fill()
 
         img = cairo.ImageSurface.create_from_png("logo_CI.png")
         rw = 0.2/float(img.get_width())
         rh = rw * self.width / self.height
         with self.saved():
-            self.ctx.translate(0.5, 0.85)
+            self.ctx.translate(0.5, 0.84)
             self.ctx.scale(rw, rh)
             self.ctx.set_source_surface(img, 0, 0)
             self.ctx.paint()
@@ -168,6 +169,10 @@ class Affiche(object):
         ys = [0.1, 0.3, 0.5, 0.7, 0.9]
         date = self.options.get('date', '')
         location = self.options.get('location', '')
+        font = create_cairo_font_face_for_file(self.font, 
+            cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_NORMAL)
+        self.ctx.set_font_face(font)
+
         self.draw_pratical_infos(date, location)
         for i in range(3):
             opts = self.options['conferences'][i]
