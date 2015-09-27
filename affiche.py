@@ -232,16 +232,24 @@ class Affiche(object):
 class FacebookBanner(Affiche):
     SHOW_CONF_IMG = False
 
-    URL_POS = (0.45, 0.9)
+    TITLE_FONTSIZE = 0.3
+    TITLE_POS = (0.02, 0.25)
+
+    PLACE_POS = (0.02, 0.45)
+    PLACE_FONTSIZE = 0.1
+    DATE_POS = (0.02, 0.35)
+    DATE_FONTSIZE = 0.1
+
+    URL_POS = (0.97, 0.9)
     URL_FONTSIZE = 0.08
     DESCRIPTION_FONTSIZE = 0
     DISCLAIMER_FONTSIZE = 0
 
     LOGO_URLAB_SIZE = 0.17
-    LOGO_URLAB_POS = (0.81, 0.6)
+    LOGO_URLAB_POS = (0.81, 0.55)
 
     LOGO_CI_SIZE = 0.13
-    LOGO_CI_POS = (0.85, 0.3)
+    LOGO_CI_POS = (0.85, 0.27)
 
     QRCODE_SIZE = 0.07
     QRCODE_POS = (0.92, 0.03)
@@ -250,18 +258,16 @@ class FacebookBanner(Affiche):
     height = 630
 
     def conf_container_path(self, x, y1, y2):
-        self.ctx.move_to(y1, 0.9*(1-x))
-        self.ctx.line_to((y1+y2)/2, 0.9*x)
-        self.ctx.line_to(y2, 0.9*(1-x))
+        self.ctx.move_to(y1, 1-x)
+        self.ctx.line_to((y1+y2)/2, x)
+        self.ctx.line_to(y2, 1-x)
 
     def conf_text_path(self, text, x, y, x_incr, y_incr):
-        self.ctx.rotate(-pi/2)
-        self.ctx.translate(-0.94+x, y)
-        self.ctx.scale(1.2, 0.7)
-        super(FacebookBanner, self).conf_text_path(text, 0, 0, x_incr, y_incr)
+        # No conf text
+        return
 
     def const_text_path(self, *args, **kwargs):
-        self.ctx.scale(0.7, 1.1)
+        self.ctx.scale(0.4, 1.1)
         super(FacebookBanner, self).const_text_path(*args, **kwargs)
 
 if __name__ == "__main__":
