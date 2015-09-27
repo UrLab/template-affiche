@@ -5,14 +5,14 @@ location: ULB - K.4.401
 font: octobre2015/BebasNeue.otf
 conferences:
   -
-    color: "#007700"
+    color: "#1cb319"
     text: "Aventures en\nPython"
     image: octobre2015/elephant_serpent.png
   -
-    color: "#002150"
+    color: "#47c2ea"
     text: "Protons-\nthérapie"
     image: octobre2015/flux.png
   -
-    color: "#aa5012"
+    color: "#d4301b"
     text: "Langages\nésotériques"
     image: octobre2015/GameOfLifebig.png
