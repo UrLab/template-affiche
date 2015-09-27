@@ -12,15 +12,51 @@ def parse_css_color(css_color):
 
 
 class Affiche(object):
+    # Smartmonday
+    TITLE_FONTSIZE = 0.1
+    TITLE_POS = (0.02, 0.1)
+
+    # Conférences gratuites en français
+    DESCRIPTION_FONTSIZE = 0.05
+    DESCRIPTION_POS = (0.02, 0.81)
+
+    # http://urlab.be
+    URL_FONTSIZE = 0.05
+    URL_POS = (0.02, 0.96)
+
+    # Editeur responsable
+    DISCLAIMER_FONTSIZE = 0.025
+    DISCLAIMER_POS = (0.02, 0.99)
+
+    # ex: ULB - K.4.401
+    PLACE_FONTSIZE = 0.05
+    PLACE_POS = (0.02, 0.2)
+
+    # ex: 5 oct. 2015 - 18h30
+    DATE_FONTSIZE = 0.045
+    DATE_POS = (0.02, 0.15)
+
+    LOGO_CI_POS = (0.5, 0.84)
+    LOGO_CI_SIZE = 0.2
+
+    LOGO_URLAB_POS = (0.71, 0.85)
+    LOGO_URLAB_SIZE = 0.2
+
+    QRCODE_POS = (0.75, 0.03)
+    QRCODE_SIZE = 0.2
+
+    width = 2100
+    height = 2970
+
     def __init__(self, options):
-        self.width = options.get('width', 2100)
-        self.height = options.get('height', 2970)
         self.font = options.get('font', 'Sans')
         self.options = options
         self.surface = cairo.ImageSurface(
             cairo.FORMAT_ARGB32, self.width, self.height)
         self.ctx = cairo.Context(self.surface)
         self.ctx.scale(self.width, self.height)
+
+        # White background
         self.ctx.rectangle(0, 0, 1, 1)
         self.ctx.set_source_rgb(1, 1, 1)
         self.ctx.fill()
@@ -30,6 +66,72 @@ class Affiche(object):
         self.ctx.save()
         yield
         self.ctx.restore()
+
+    def draw_pratical_infos(self, date_text, place):
+        self.ctx.set_font_size(self.PLACE_FONTSIZE)
+        self.ctx.move_to(*self.PLACE_POS)
+        self.ctx.text_path(place)
+        self.ctx.set_source_rgb(0.3, 0.3, 0.3)
+        self.ctx.fill()
+
+        self.ctx.set_font_size(self.DATE_FONTSIZE)
+        self.ctx.move_to(*self.DATE_POS)
+        self.ctx.text_path(date_text)
+        self.ctx.set_source_rgb(1, 0.1, 0.3)
+        self.ctx.fill()
+
+    def draw_constant_infos(self):
+        self.ctx.set_font_size(self.TITLE_FONTSIZE)
+        self.ctx.move_to(*self.TITLE_POS)
+        self.ctx.text_path("SmartMonday")
+
+        self.ctx.set_font_size(self.DESCRIPTION_FONTSIZE)
+        x, y = self.DESCRIPTION_POS
+        self.ctx.move_to(x, y)
+        self.ctx.text_path(u"Conférences")
+        self.ctx.move_to(x, y+self.DESCRIPTION_FONTSIZE)
+        self.ctx.text_path(u"gratuites en français")
+
+        self.ctx.set_font_size(self.URL_FONTSIZE)
+        self.ctx.move_to(*self.URL_POS)
+        self.ctx.text_path(u"http://urlab.be/sm")
+        self.ctx.set_source_rgb(0, 0, 0)
+        self.ctx.fill()
+
+        self.ctx.move_to(*self.DISCLAIMER_POS)
+        self.ctx.set_font_size(self.DISCLAIMER_FONTSIZE)
+        self.ctx.text_path(
+            u"Éditeur responsable: Cercle informatique, "
+            u"Boulevard du Triomphe CP 206, 1050 Bruxelles")
+        self.ctx.set_source_rgb(0.5, 0.5, 0.5)
+        self.ctx.fill()
+
+        img = cairo.ImageSurface.create_from_png("logo_CI.png")
+        rw = self.LOGO_CI_SIZE/float(img.get_width())
+        rh = rw * self.width / self.height
+        with self.saved():
+            self.ctx.translate(*self.LOGO_CI_POS)
+            self.ctx.scale(rw, rh)
+            self.ctx.set_source_surface(img, 0, 0)
+            self.ctx.paint()
+
+        img = cairo.ImageSurface.create_from_png("urlab.png")
+        rw = self.LOGO_URLAB_SIZE/float(img.get_width())
+        rh = rw * self.width / self.height
+        with self.saved():
+            self.ctx.translate(*self.LOGO_URLAB_POS)
+            self.ctx.scale(rw, rh)
+            self.ctx.set_source_surface(img, 0, 0)
+            self.ctx.paint()
+
+        img = cairo.ImageSurface.create_from_png("smartMondayQR.png")
+        rw = self.QRCODE_SIZE/float(img.get_width())
+        rh = rw * self.width / self.height
+        with self.saved():
+            self.ctx.translate(*self.QRCODE_POS)
+            self.ctx.scale(rw, rh)
+            self.ctx.set_source_surface(img, 0, 0)
+            self.ctx.paint()
 
     def draw_triangle(self, triangle_options, x, y1, y2):
         def triangle_path():
@@ -100,70 +202,6 @@ class Affiche(object):
                     self.ctx.text_path(line)
                 self.ctx.set_source_rgb(1, 1, 1)
                 self.ctx.fill()
-
-    def draw_pratical_infos(self, date_text, place):
-        self.ctx.set_font_size(0.05)
-        self.ctx.move_to(0.02, 0.2)
-        self.ctx.text_path(place)
-        self.ctx.set_source_rgb(0.3, 0.3, 0.3)
-        self.ctx.fill()
-
-        self.ctx.set_font_size(0.045)
-        self.ctx.move_to(0.02, 0.15)
-        self.ctx.text_path(date_text)
-        self.ctx.set_source_rgb(1, 0.1, 0.3)
-        self.ctx.fill()
-
-    def draw_constant_infos(self):
-        self.ctx.set_font_size(0.1)
-        self.ctx.move_to(0.02, 0.1)
-        self.ctx.text_path("SmartMonday")
-
-        self.ctx.set_font_size(0.05)
-        self.ctx.move_to(0.02, 0.82)
-        self.ctx.text_path(u"Conférences")
-        self.ctx.move_to(0.02, 0.86)
-        self.ctx.text_path(u"gratuites en français")
-
-        self.ctx.move_to(0.02, 0.96)
-        self.ctx.text_path(u"http://urlab.be/sm")
-        self.ctx.set_source_rgb(0, 0, 0)
-        self.ctx.fill()
-
-        self.ctx.move_to(0.02, 0.99)
-        self.ctx.set_font_size(0.025)
-        self.ctx.text_path(
-            u"Éditeur responsable: Cercle informatique, "
-            u"Boulevard du Triomphe CP 206, 1050 Bruxelles")
-        self.ctx.set_source_rgb(0.5, 0.5, 0.5)
-        self.ctx.fill()
-
-        img = cairo.ImageSurface.create_from_png("logo_CI.png")
-        rw = 0.2/float(img.get_width())
-        rh = rw * self.width / self.height
-        with self.saved():
-            self.ctx.translate(0.5, 0.84)
-            self.ctx.scale(rw, rh)
-            self.ctx.set_source_surface(img, 0, 0)
-            self.ctx.paint()
-
-        img = cairo.ImageSurface.create_from_png("urlab.png")
-        rw = 0.2/float(img.get_width())
-        rh = rw * self.width / self.height
-        with self.saved():
-            self.ctx.translate(0.71, 0.85)
-            self.ctx.scale(rw, rh)
-            self.ctx.set_source_surface(img, 0, 0)
-            self.ctx.paint()
-
-        img = cairo.ImageSurface.create_from_png("smartMondayQR.png")
-        rw = 0.20/float(img.get_width())
-        rh = rw * self.width / self.height
-        with self.saved():
-            self.ctx.translate(0.75, 0.03)
-            self.ctx.scale(rw, rh)
-            self.ctx.set_source_surface(img, 0, 0)
-            self.ctx.paint()
 
     def render(self, filename='affiche.png'):
         ys = [0.1, 0.3, 0.5, 0.7, 0.9]
