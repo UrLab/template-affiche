@@ -153,8 +153,9 @@ class Affiche(object):
         color = triangle_options.get('color', "#ffffff")
         if isinstance(color, str) or isinstance(color, unicode):
             color = parse_css_color(color)
+        alpha = 0.5 if self.SHOW_CONF_IMG else 0.9
         if len(color) == 3:
-            color = tuple(color) + (0.5,)
+            color = tuple(color) + (alpha,)
 
         # Image
         if imgfile and self.SHOW_CONF_IMG:
