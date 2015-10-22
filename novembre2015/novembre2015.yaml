@@ -12,5 +12,5 @@ conferences:
     # image: octobre2015/flux.png
   -
     color: "#de1515"
-    text: "RedBaron: modifier du\ncode en python"
+    text: "RedBaron: modifier du \npython en python"
     image: novembre2015/serpents-noeuds.png
