@@ -1,0 +1,18 @@
+width:  2100
+height: 2970
+date: 9 novembre 2015 - 18h30
+location: ULB - K.4.401
+font: octobre2015/BebasNeue.otf
+conferences:
+  -
+    color: "#038dd6"
+    text: "Cryptographie\nquantique"
+    image: novembre2015/crypto.png
+  -
+    color: "#ffec00"
+    text: ""
+    # image: octobre2015/flux.png
+  -
+    color: "#de1515"
+    text: "RedBaron: modifier du \npython en python"
+    image: novembre2015/serpents-noeuds.png
