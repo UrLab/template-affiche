@@ -14,6 +14,7 @@ def parse_css_color(css_color):
 
 class Affiche(object):
     SHOW_CONF_IMG = True
+    PLACE_SHADOW = False
 
     # Smartmonday
     TITLE_FONTSIZE = 0.1
@@ -88,6 +89,14 @@ class Affiche(object):
                 self.PLACE_FONTSIZE, *self.PLACE_POS)
             self.ctx.set_source_rgb(0.3, 0.3, 0.3)
             self.ctx.fill()
+
+        if self.PLACE_SHADOW:
+            with self.saved():
+                left, top = self.DATE_POS
+                self.const_text_path(date_text,
+                    self.DATE_FONTSIZE, 0.002+left, 0.003+top)
+                self.ctx.set_source_rgb(0, 0, 0)
+                self.ctx.fill()
 
         with self.saved():
             self.const_text_path(date_text,
@@ -236,6 +245,7 @@ class FacebookBanner(Affiche):
     TITLE_FONTSIZE = 0.3
     TITLE_POS = (0.02, 0.25)
 
+    PLACE_SHADOW = True
     PLACE_POS = (0.02, 0.45)
     PLACE_FONTSIZE = 0.1
     DATE_POS = (0.02, 0.35)
