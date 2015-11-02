@@ -9,7 +9,7 @@ conferences:
   -
     color: "#ffec00"
     text: ""
-    # image: octobre2015/flux.png
+    image: novembre2015/mbean.png
   -
     color: "#de1515"
     text: "RedBaron: modifier du \npython en python"
