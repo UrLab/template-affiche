@@ -3,14 +3,14 @@ location: ULB - tba.
 font: octobre2015/BebasNeue.otf
 conferences:
   -
-    color: "#ffec00"
-    text: "Web scrapping"
-    image: mars2016/python-jungle.png
+    color: "#4d98fd"
+    text: "Synthèse et théorie\nmusicale"
+    image: mars2016/fl.png
   -
     color: "#1ddb0f"
     text: "L'histoire du\nChaos Computer Club"
     image: mars2016/ccc.png
   -
-    color: "#4d98fd"
-    text: "Big data Boson\nof Things"
-    image: mars2016/data.png
+    color: "#d10000"
+    text: "Web scrapping\nen Python"
+    image: mars2016/python-jungle.png
