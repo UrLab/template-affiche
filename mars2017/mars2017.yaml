@@ -1,0 +1,17 @@
+date: 13 mars 2017 - 18h30
+location: ULB - tba.
+font: octobre2015/BebasNeue.otf
+conferences:
+  -
+    color: "#4d98fd"
+    text: "Reverse engineering\nsoftware"
+    image: mars2017/reverse.png
+  -
+    color: "#d10000"
+    text: "La photo"
+    image: mars2017/photo.png
+  -
+    color: "#1ddb0f"
+    text: "Programmer la musique\nOvertone"
+    image: mars2017/overtone.png
+
