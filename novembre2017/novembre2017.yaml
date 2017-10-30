@@ -12,6 +12,6 @@ conferences:
     image: novembre2017/micropython.png
   -
     color: "#1ddb0f"
-    text: "Staying Anonymous\non the Internet"
-    image: novembre2017/anonymous.png
+    text: "YunoHost"
+    image: novembre2017/yunohost.png
 
