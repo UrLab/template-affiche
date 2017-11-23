@@ -1,0 +1,17 @@
+date: 4 decembre 2017 - 19h
+location: TBD
+font: octobre2015/BebasNeue.otf
+conferences:
+  -
+    color: "#4d98fd"
+    text: "Machine Learning"
+    image: decembre2017/ml.png
+  -
+    color: "#d10000"
+    text: "React"
+    image: decembre2017/react.png
+  -
+    color: "#1ddb0f"
+    text: "Comment ne pas\ndonner une présentation"
+    image: decembre2017/bruno1.png
+
