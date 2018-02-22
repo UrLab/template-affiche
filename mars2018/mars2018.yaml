@@ -1,0 +1,16 @@
+date: 5 mars 2018 - 19h00
+location: ULB - UA4.222
+font: octobre2015/BebasNeue.otf
+conferences:
+  -
+    color: "#4d98fd"
+    text: "Machine Learning"
+    image: mars2018/machinelearning.png
+  -
+    color: "#d10000"
+    text: "Fourmis"
+    image: mars2018/fourmis.png
+  -
+    color: "#1ddb0f"
+    text: "Intelligence en Essaim"
+    image: mars2018/swarm.png
