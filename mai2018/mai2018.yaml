@@ -1,0 +1,16 @@
+date: 7 mai 2018 - 19h00
+location: ULB - S.K.4.201
+font: octobre2015/BebasNeue.otf
+conferences:
+  -
+    color: "#4d98fd"
+    text: "Sysadmin 2.0 : a CI/CD \n                       story"
+    image: mai2018/Jenkins.png
+  -
+    color: "#1ddb0f"
+    text: "\nLa cryptographie"
+    image: mai2018/crypto.png
+  -
+    color: "#d10000"
+    text: "Comment pécho ta race \nquand t'es en info"
+    image: mai2018/drague.png
