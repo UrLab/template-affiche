@@ -226,7 +226,7 @@ class Affiche(object):
         ys = [0.1, 0.3, 0.5, 0.7, 0.9]
         date = self.options.get('date', '')
         location = self.options.get('location', '')
-        font = create_cairo_font_face_for_file(self.font, 
+        font = create_cairo_font_face_for_file(self.font,
             cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_NORMAL)
         self.ctx.set_font_face(font)
 
@@ -265,8 +265,8 @@ class FacebookBanner(Affiche):
     QRCODE_SIZE = 0.07
     QRCODE_POS = (0.92, 0.03)
 
-    width = 1702
-    height = 630
+    width = 1200
+    height = 628
 
     def conf_container_path(self, x, y1, y2):
         self.ctx.move_to(y1, 1-x)
