@@ -1,0 +1,16 @@
+date: 1 octobre 2018 - 19h00
+location: ULB - S.K.4.301
+font: octobre2015/BebasNeue.otf
+conferences:
+  -
+    color: "#4d98fd"
+    text: "Présentation UrLab"
+    image: urlab.png
+  -
+    color: "#1ddb0f"
+    text: "\nQu'est-ce qu'un hacker?"
+    image: octobre2018/hacker.png
+  -
+    color: "#d10000"
+    text: "La 3D, pas que \ndans les films"
+    image: octobre2018/3D.png
