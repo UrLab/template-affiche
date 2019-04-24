@@ -1,0 +1,16 @@
+date: 6 mai 2019 - 19h00
+location: ULB - S.K.4.201
+font: octobre2015/BebasNeue.otf
+conferences:
+  -
+    color: "#4d98fd"
+    text: "Introduction à LLVM"
+    image: mai2019/llvm.png
+  -
+    color: "#1ddb0f"
+    text: "Ecologie et\nEconomie de la Drogue"
+    image: mai2019/weed.png
+  -
+    color: "#d10000"
+    text: "Un Contrôleur MIDI en USB\n       avec Zephyr OS"
+    image: mai2019/midi.png

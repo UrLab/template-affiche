@@ -1,0 +1,16 @@
+date: 5 novembre 2018 - 19h00
+location: ULB - S.AW1.125
+font: octobre2015/BebasNeue.otf
+conferences:
+  -
+    color: "#4d98fd"
+    text: "Monitoring et Operations\nQuotidiennes avec\n     Grafana"
+    image: novembre2018/grafana.png
+  -
+    color: "#1ddb0f"
+    text: ""
+    image: novembre2018/filler.png
+  -
+    color: "#d10000"
+    text: "Les CTF"
+    image: novembre2018/maze.png

@@ -1,0 +1,16 @@
+date: 3 décembre 2018 - 19h00
+location: ULB - S.K.3.401
+font: octobre2015/BebasNeue.otf
+conferences:
+  -
+    color: "#4d98fd"
+    text: "La Complexité du\nProblème Tetris"
+    image: decembre2018/tetris.png
+  -
+    color: "#1ddb0f"
+    text: "\nOpen Street Map"
+    image: decembre2018/openstreetmap.png
+  -
+    color: "#d10000"
+    text: "         Le Framework Web\n                     React"
+    image: decembre2018/react_2.png
